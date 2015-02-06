@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.hp.grapplecare"
+    >
+
+<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.hp.grapplecare.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.example.hp.grapplecare.customer"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.customer" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.hp.grapplecare.Form"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.Form" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.hp.grapplecare.staff"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.staff" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+
+            android:name="com.example.hp.grapplecare.ViewT"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.ViewT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+
+            android:name="com.example.hp.grapplecare.empty"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.empty" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+
+            android:name="com.example.hp.grapplecare.display"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.display" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+
+            android:name="com.example.hp.grapplecare.displayco"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.displayco" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+
+            android:name="com.example.hp.grapplecare.staffdisplay"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.staffdisplay" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+
+            android:name="com.example.hp.grapplecare.StaffView"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.StaffView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
