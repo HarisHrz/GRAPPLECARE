@@ -76,7 +76,7 @@ public class staffdisplay extends Activity {
 
             tick=(TextView) findViewById(R.id.textView35);
             sb=(TextView) findViewById(R.id.textView33);
-            RadioGroup rg=(RadioGroup) findViewById(R.id.radioGroup);
+            RadioGroup rg=(RadioGroup) findViewById(R.id.radioGroup2);
             rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
