@@ -1,49 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#ffffff"
+        android:id="@+id/imageView4"
+        android:layout_marginTop="160dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        />
 
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#4e8975"
+        android:textSize="25sp"
+        android:layout_marginTop="180dp"
+        android:layout_marginStart="20dp"
+
+
+        android:textStyle="bold"
+        android:id="@+id/textView14"
+        android:layout_alignTop="@+id/imageView7"
+        android:layout_alignStart="@+id/imageView7" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="125dp"
+        android:id="@+id/imageView7"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:background="#ffffff"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/button3"
         android:layout_gravity="bottom"
-        android:layout_alignParentBottom="true"
+        android:layout_alignBottom="@+id/imageView4"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="78dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:hint="remark"
-        android:id="@+id/editText3"
-        android:layout_above="@+id/button3"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginBottom="44dp" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <RadioButton android:id="@+id/status_pending"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pending"
-            android:onClick="onRadioButtonClicked"/>
-
-        <RadioButton android:id="@+id/status_completed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Completed"
-            android:onClick="onRadioButtonClicked"/>
-
-        <RadioButton android:id="@+id/status_closed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Closed"
-            android:onClick="onRadioButtonClicked"/>
+        android:orientation="vertical"
+        android:id="@+id/radioGroup">
 
 
     </RadioGroup>
+
+
+
+
+    <RadioButton android:id="@+id/status_pending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pending"
+        android:onClick="onRadioButtonClicked"
+        android:textColor="#737e7c"
+        android:textSize="15sp"
+
+        android:layout_above="@+id/status_completed"
+        android:layout_alignStart="@+id/status_completed" />
+
+    <RadioButton android:id="@+id/status_completed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Completed"
+        android:textColor="#737e7c"
+        android:textSize="15sp"
+
+        android:onClick="onRadioButtonClicked"
+        android:layout_below="@+id/textView14"
+        android:layout_toEndOf="@+id/textView32" />
+
+    <RadioButton android:id="@+id/status_closed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#737e7c"
+        android:textSize="15sp"
+
+        android:text="Closed"
+        android:onClick="onRadioButtonClicked"
+        android:layout_below="@+id/status_completed"
+        android:layout_alignStart="@+id/status_completed" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Status   :"
+        android:textColor="#737e7c"
+        android:textSize="25sp"
+
+        android:id="@+id/textView31"
+        android:layout_above="@+id/status_completed"
+        android:layout_toEndOf="@+id/textView14" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="Ticket number"
+        android:id="@+id/textView32"
+        android:textColor="#4e8975"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp"
+        android:layout_alignTop="@+id/imageView7"
+        android:layout_alignStart="@+id/textView33" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="Cust Name"
+        android:textColor="#4e8975"
+        android:textSize="25sp"
+        android:id="@+id/textView33"
+        android:layout_below="@+id/textView32"
+        android:layout_alignStart="@+id/textView31" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/status_closed"
+        android:layout_alignEnd="@+id/imageView4"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp">
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Remark   :"
+        android:textColor="#737e7c"
+        android:textSize="25sp"
+
+        android:id="@+id/textView30"
+        android:layout_alignTop="@+id/editText3"
+        android:layout_toStartOf="@+id/button3" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:hint="remark"
+            android:id="@+id/editText3"
+            android:layout_gravity="right|top"
+
+            android:layout_marginBottom="71dp"
+            android:layout_above="@+id/button3"
+            android:layout_alignParentEnd="true" />
+    </FrameLayout>
+
 </RelativeLayout>
