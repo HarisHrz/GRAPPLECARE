@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -72,7 +71,7 @@ public class MainActivity extends Activity {
         ok = (Button) findViewById(R.id.button1);
         num=(TextView) findViewById(R.id.number);
        EditText num;
-        int  n;
+
         }
 
 

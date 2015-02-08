@@ -106,7 +106,7 @@
         android:hint="Product ID"
         android:layout_marginRight="25dp"
         android:textColor="#737e7c"
-
+        android:textSize="22sp"
         android:layout_alignBottom="@+id/textView12"
         android:layout_toEndOf="@+id/textView7" />
 
