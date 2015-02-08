@@ -85,7 +85,7 @@ public class customer extends Activity {
                             i.putExtra("id", sa3.getString("id"));
                             i.putExtra("product", sa3.getString("Name"));
                             i.putExtra("vendor", sa3.getString("Vendor"));
-                            i.putExtra("status", sa3.getString("Status"));
+                            //i.putExtra("status", sa3.getString("Status"));
                             startActivity(i);
                         } catch (Exception e) {
                             et.setText("Invalid Purchase Id");
