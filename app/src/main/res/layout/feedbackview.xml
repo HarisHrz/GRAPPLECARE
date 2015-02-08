@@ -1,5 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#e5e4e2"
+    android:weightSum="1">
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:id="@+id/imageView7"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#ffffff"
+        android:id="@+id/imageView4"
+        android:layout_marginTop="110dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        />
+
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:isIndicator="true"
+        android:layout_marginBottom="81dp"
+        android:layout_alignBottom="@+id/imageView4"
+        android:layout_alignEnd="@+id/imageView4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Rated!"
+        android:textColor="#737e7c"
+        android:textSize="22sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/textView13"
+        android:layout_alignBottom="@+id/ratingBar1"
+        android:layout_alignStart="@+id/imageView4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#4e8975"
+        android:textSize="25sp"
+        android:textStyle="bold"
+
+        android:layout_marginBottom="20dp"
+        android:id="@+id/textView14"
+        android:layout_alignStart="@+id/textView13"
+        android:layout_alignBottom="@+id/imageView7" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Feedback !"
+        android:id="@+id/textView15"
+        android:textColor="#737e7c"
+        android:layout_marginBottom="300dp"
+        android:textSize="22sp"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/ratingBar1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:id="@+id/imageView13"
+        android:src="@drawable/closed"
+        android:layout_alignTop="@+id/imageView4"
+        android:layout_centerHorizontal="true" />
+
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+
+        android:layout_below="@+id/imageView13"
+        android:layout_alignEnd="@+id/imageView7"
+        android:id="@+id/frameLayout">
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:hint="Feedback here !"
+        android:textColor="#4e8975"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"
+        android:layout_marginRight="30dp"
+
+        android:id="@+id/textView34"
+        android:layout_alignBottom="@+id/textView15"
+        android:layout_alignStart="@+id/ratingBar1"
+        android:layout_marginStart="44dp" />
+
+
+</RelativeLayout>

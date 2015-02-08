@@ -19,6 +19,9 @@ public class StaffView extends ListActivity {
     String sta[];
     String idv[];
 
+    String feedback[];
+    String rating[];
+
 
 
 
@@ -28,7 +31,8 @@ public class StaffView extends ListActivity {
         tickets = getIntent().getStringArrayExtra("ticket");
         sta=getIntent().getStringArrayExtra("status");
         idv=getIntent().getStringArrayExtra("id_value");
-
+        feedback=getIntent().getStringArrayExtra("Feedback");
+        rating=getIntent().getStringArrayExtra("Rating");
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, tickets));
         Log.d("Value0", tickets[0]);
         Log.d("Value0", sta[0]);
@@ -40,6 +44,10 @@ public class StaffView extends ListActivity {
         Log.d("sta", sta[position]);
         i.putExtra("status",sta[position]);
         i.putExtra("id_value",idv[position]);
+        i.putExtra("feed",feedback[position]);
+        i.putExtra("rate",rating[position]);
+
+
 
         startActivity(i);
 

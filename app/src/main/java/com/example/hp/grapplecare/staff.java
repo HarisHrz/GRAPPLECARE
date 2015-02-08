@@ -25,6 +25,8 @@ public class staff extends Activity {
     String tickets[];
     String sta[];
     String id[];
+    String feed[];
+    String rating[];
     //github testing
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,8 @@ public class staff extends Activity {
                 tickets = new String[ticketarray.length()];
                 id=new String[ticketarray.length()];
                 sta=new String[ticketarray.length()];
+                feed=new String[ticketarray.length()];
+                rating=new String[ticketarray.length()];
                 n=ticketarray.length();
                 for(int i=0;i<ticketarray.length();i++) {
                     org.json.JSONObject sa3 = ticketarray.getJSONObject(i);
@@ -74,8 +78,10 @@ public class staff extends Activity {
 
                     tickets[j] = sa3.getString("id");
                     id[j]=sa3.getString("id");
-                    Log.d("Subject", tickets[j]);
-                    Log.d("Description", sa3.getString("Description"));
+                    feed[j]=sa3.getString("Feedback");
+                    rating[j]=sa3.getString("Rating");
+                    Log.d("Feedback",feed[j]);
+                    Log.d("Rating", rating[j]);
                     Log.d("Status", sa3.getString("Status"));
                     sta[j]=sa3.getString("Status");
 
@@ -91,6 +97,8 @@ public class staff extends Activity {
                     i.putExtra("ticket", tickets);
                     i.putExtra("status",sta);
                     i.putExtra("id_value",id);
+                    i.putExtra("Feedback",feed);
+                    i.putExtra("Rating",rating);
 
                     startActivity(i);
                 }

@@ -7,8 +7,13 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
-
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -29,8 +34,10 @@ public class staffdisplay extends Activity {
     String email = MainActivity.Email;
     String userid = MainActivity.userpass;
     int f=0;
-    TextView s,c,sts,up,lo,stf,re;
-    public static String sub,created,update,location,lon,lat,status,staff,remark;
+    TextView tick,feedT,sb;
+    RadioGroup rg;
+    String radio_status;
+    public static String sub,created,update,location,lon,lat,status,staff,remark,rate;
 
 
 
@@ -38,13 +45,6 @@ public class staffdisplay extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         // super.onCreate(savedInstanceState);
         String sta=getIntent().getStringExtra("status");
-
-
-
-
-
-
-
         Log.d("STATUS in display:",sta);
         if (sta.equals("Closed")) {
             f=1;
@@ -55,24 +55,48 @@ public class staffdisplay extends Activity {
 
 
 
+
         super.onCreate(savedInstanceState);
 
         if(f==1)
         {  setContentView(R.layout.feedbackview);
+
+            TextView tv = (TextView)findViewById(R.id.textView14);
+            tv.setText("#TI"+getIntent().getStringExtra("ticket"));
+            feedT=(TextView) findViewById(R.id.textView34);
+            feedT.setText(getIntent().getStringExtra("feed"));
+            RatingBar ratingBar1 = (RatingBar) findViewById(R.id.ratingBar1);
+            ratingBar1.setRating(Float.parseFloat(getIntent().getStringExtra("rate")));
+
 
 
         }
         else {
             setContentView(R.layout.statusupdate);
 
-            s=(TextView) findViewById(R.id.textView17);
-            c=(TextView) findViewById(R.id.textView19);
-            sts=(TextView) findViewById(R.id.textView23);
-            up=(TextView) findViewById(R.id.textView21);
-            lo=(TextView) findViewById(R.id.textView25);
-            stf=(TextView) findViewById(R.id.textView27);
-            re=(TextView) findViewById(R.id.textView29);
+            tick=(TextView) findViewById(R.id.textView35);
+            sb=(TextView) findViewById(R.id.textView33);
+            RadioGroup rg=(RadioGroup) findViewById(R.id.radioGroup);
+            rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    RadioButton rb1=(RadioButton) findViewById(R.id.status_pending);
+                    RadioButton rb2=(RadioButton) findViewById(R.id.status_onhold);
+                    RadioButton rb3=(RadioButton) findViewById(R.id.status_completed);
+                    if(rb1.isChecked()) { radio_status="Pending";
+                    }
+                    else if(rb2.isChecked()){
+                        radio_status="OnHold";
+                    }
+                    else if(rb3.isChecked())
+                    {
+                        radio_status="Completed";
+                    }
 
+
+
+                }
+            });
 
         }
         String id=getIntent().getStringExtra("ticket");
@@ -94,7 +118,7 @@ public class staffdisplay extends Activity {
         try {
             HttpResponse response = httpclient.execute(request);
             JSONObject sa = new JSONObject(org.apache.http.util.EntityUtils.toString(response.getEntity()));
-            Log.d("tickets:","ok");
+            Log.d("tickets:", "ok");
 
             if (sa.getString("error").equals("false")) {
 
@@ -112,17 +136,17 @@ public class staffdisplay extends Activity {
                 //   Log.d("id", sa3.getString("id"));
 
                 //  Log.d("DATE", ticketarray.getString("created_at"));
-                created=ticketarray.getString("created_at");
-                c.setText(created);
+                created = ticketarray.getString("id");
+                tick.setText("#TI"+created);
                 Log.d("DATE", ticketarray.getString("Subject"));
 
-                s.setText(ticketarray.getString("Subject"));
-                status= ticketarray.getString("Status");
-                sts.setText(status);
-                update= ticketarray.getString("updated_at");
-                up.setText(update);
-                lon=ticketarray.getString("Longitude");
-                lat=ticketarray.getString("Latitude");
+                sb.setText(ticketarray.getString("Subject"));
+//                status = ticketarray.getString("Status");
+//                sts.setText(status);
+//                update = ticketarray.getString("updated_at");
+//                up.setText(update);
+                lon = ticketarray.getString("Longitude");
+                lat = ticketarray.getString("Latitude");
                 double MyLat = Double.parseDouble(lat);
                 double MyLong = Double.parseDouble(lon);
                 {
@@ -131,7 +155,7 @@ public class staffdisplay extends Activity {
                     String cityName = addresses.get(0).getAddressLine(0);
                     String stateName = addresses.get(0).getAddressLine(1);
                     String countryName = addresses.get(0).getAddressLine(2);
-                    lo.setText(cityName);
+                    ///lo.setText(cityName);
                 }
 
 
@@ -142,21 +166,13 @@ public class staffdisplay extends Activity {
                 Log.d("Description", ticketarray.getString("updated_at"));
                 // Log.d("Description", ticketarray.getString("Location"));
                 //e1.setText(ticketarray.getString("Status"));
-                JSONObject userstaff=new JSONObject(ticketarray.getString("userstaff"));
+                JSONObject userstaff = new JSONObject(ticketarray.getString("userstaff"));
                 Log.d("Description", userstaff.getString("fname"));
-                staff=userstaff.getString("fname");
-                stf.setText(staff);
-                remark=userstaff.getString("Remark");
-                re.setText(remark);
-
-
-
-
-
-
-
-
-
+//                staff = userstaff.getString("fname");
+//                stf.setText(staff);
+//                remark = userstaff.getString("Remark");
+//                re.setText(remark);
+                rate = userstaff.getString("Rating");
 
 
             }
@@ -170,6 +186,51 @@ public class staffdisplay extends Activity {
 
 
 
+    }
+    public void onClick4(View view) {
+
+
+        String remark = ((EditText) findViewById(R.id.editText3)).getText().toString();
+
+
+
+
+
+        Log.d("remark",remark);
+
+
+        int SDK_INT = android.os.Build.VERSION.SDK_INT;
+        if (SDK_INT > 8) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                    .permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+        }
+
+
+        //DefaultHttpClient httpClient = new DefaultHttpClient();
+        HttpGet request1 = new HttpGet("http://mainproject.manuknarayanan.in/api/v1/ticket/changestatus/" + getIntent().getStringExtra("ticket") + "?status=" +radio_status );
+        request1.addHeader("Authorization", "Basic " + Base64.encodeToString(userid.getBytes(), Base64.NO_WRAP));
+        HttpClient httpclient1 = new DefaultHttpClient();
+        try {
+            HttpResponse response = httpclient1.execute(request1);
+            org.json.JSONObject sa = new org.json.JSONObject(org.apache.http.util.EntityUtils.toString(response.getEntity()));
+            Log.d("message", sa.getString("message"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        ResponseHandler<String> responseHandler = new BasicResponseHandler();
+        HttpGet request = new HttpGet("http://mainproject.manuknarayanan.in/api/v1/ticket/remark/" + getIntent().getStringExtra("ticket") + "?remark=" + remark);
+        request.addHeader("Authorization", "Basic " + Base64.encodeToString(userid.getBytes(), Base64.NO_WRAP));
+        HttpClient httpclient = new DefaultHttpClient();
+        try {
+            HttpResponse response = httpclient.execute(request);
+            org.json.JSONObject sa = new org.json.JSONObject(org.apache.http.util.EntityUtils.toString(response.getEntity()));
+            Log.d("message", sa.getString("message"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
