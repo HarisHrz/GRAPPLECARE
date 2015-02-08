@@ -93,7 +93,7 @@ public class staffdisplay extends Activity {
                         radio_status="Completed";
                     }
 
-Log.d("radio","ok");
+
 
                 }
             });
@@ -129,27 +129,50 @@ Log.d("radio","ok");
                 JSONObject ticketarray = new JSONObject(sa5);
                 int a = ticketarray.length();
 
+                //for(int i=0;i<ticketarray.length();i++) {
+                //    org.json.JSONObject sa3 = ticketarray.getJSONObject(i);
 
+
+                //   Log.d("id", sa3.getString("id"));
+
+                //  Log.d("DATE", ticketarray.getString("created_at"));
                 created = ticketarray.getString("id");
                 tick.setText("#TI"+created);
                 Log.d("DATE", ticketarray.getString("Subject"));
 
                 sb.setText(ticketarray.getString("Subject"));
-//
-//                lon = ticketarray.getString("Longitude");
-//                lat = ticketarray.getString("Latitude");
-//                double MyLat = Double.parseDouble(lat);
-//                double MyLong = Double.parseDouble(lon);
-//                {
-//                    Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-//                    List<Address> addresses = geocoder.getFromLocation(MyLat, MyLong, 1);
-//                    String cityName = addresses.get(0).getAddressLine(0);
-//                    String stateName = addresses.get(0).getAddressLine(1);
-//                    String countryName = addresses.get(0).getAddressLine(2);
-//                    ///lo.setText(cityName);
-//                }
+//                status = ticketarray.getString("Status");
+//                sts.setText(status);
+//                update = ticketarray.getString("updated_at");
+//                up.setText(update);
+                lon = ticketarray.getString("Longitude");
+                lat = ticketarray.getString("Latitude");
+                double MyLat = Double.parseDouble(lat);
+                double MyLong = Double.parseDouble(lon);
+                {
+                    Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+                    List<Address> addresses = geocoder.getFromLocation(MyLat, MyLong, 1);
+                    String cityName = addresses.get(0).getAddressLine(0);
+                    String stateName = addresses.get(0).getAddressLine(1);
+                    String countryName = addresses.get(0).getAddressLine(2);
+                    ///lo.setText(cityName);
+                }
 
 
+                Log.d("Description", ticketarray.getString("Description"));
+                Log.d("Description", ticketarray.getString("created_at"));
+                Log.d("Description", ticketarray.getString("Subject"));
+                Log.d("Description", ticketarray.getString("Status"));
+                Log.d("Description", ticketarray.getString("updated_at"));
+                // Log.d("Description", ticketarray.getString("Location"));
+                //e1.setText(ticketarray.getString("Status"));
+                JSONObject userstaff = new JSONObject(ticketarray.getString("userstaff"));
+                Log.d("Description", userstaff.getString("fname"));
+//                staff = userstaff.getString("fname");
+//                stf.setText(staff);
+//                remark = userstaff.getString("Remark");
+//                re.setText(remark);
+                rate = userstaff.getString("Rating");
 
 
             }
@@ -168,6 +191,11 @@ Log.d("radio","ok");
 
 
         String remark = ((EditText) findViewById(R.id.editText3)).getText().toString();
+
+
+
+
+
         Log.d("remark",remark);
 
 

@@ -131,27 +131,24 @@ public class display extends Activity {
                 sts.setText(status);
                 update= ticketarray.getString("updated_at");
                 up.setText(update);
-                location=  ticketarray.getString("GeoLocation");
-                lo.setText(location);
+                lon=ticketarray.getString("Longitude");
+                lat=ticketarray.getString("Latitude");
+                Log.d("value of lon",lon);
+                double MyLat = Double.parseDouble(lat);
+                double MyLong = Double.parseDouble(lon);
 
-//                lon=ticketarray.getString("Longitude");
-//                lat=ticketarray.getString("Latitude");
-//                Log.d("value of lon",lon);
-//                double MyLat = Double.parseDouble(lat);
-//                double MyLong = Double.parseDouble(lon);
-//
-//                Log.d("Location", MyLat+"  "+MyLong);
-//                {
-//                    Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-//                    List<Address> addresses = geocoder.getFromLocation(MyLat, MyLong, 1);
-//                    String cityName = addresses.get(0).getAddressLine(0);
-//                    Log.d("Cityname", cityName);
-//                    String stateName = addresses.get(0).getAddressLine(1);
-//                    String countryName = addresses.get(0).getAddressLine(2);
-//                    int i = addresses.get(0).getMaxAddressLineIndex();
-//
-//                    lo.setText((stateName.split(",", 1))[0]);
-//                }
+                Log.d("Location", MyLat+"  "+MyLong);
+                {
+                    Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+                    List<Address> addresses = geocoder.getFromLocation(MyLat, MyLong, 1);
+                    String cityName = addresses.get(0).getAddressLine(0);
+                    Log.d("Cityname", cityName);
+                    String stateName = addresses.get(0).getAddressLine(1);
+                    String countryName = addresses.get(0).getAddressLine(2);
+                    int i = addresses.get(0).getMaxAddressLineIndex();
+
+                    lo.setText((stateName.split(",", 1))[0]);
+                }
 
 
                 Log.d("Description", ticketarray.getString("Description"));

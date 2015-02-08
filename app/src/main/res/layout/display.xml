@@ -141,7 +141,6 @@
         android:text="Location"
 
         android:textColor="#737e7c"
-        android:layout_marginTop="25dp"
         android:textSize="22sp"
         android:id="@+id/textView24"
         android:layout_below="@+id/textView20"

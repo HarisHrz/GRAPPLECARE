@@ -52,69 +52,11 @@ public class customer extends Activity {
 
         t1 = (TextView) findViewById(R.id.nm);
         t2 = (TextView) findViewById(R.id.em);
-        t3=(TextView) findViewById(R.id.number);
-        num();
         t1.setText(name);
         t2.setText(email);
         Button b1 = (Button) findViewById(R.id.insert);
         Button b2 = (Button) findViewById(R.id.view);
 
-    }
-
-    private void num() {
-        int SDK_INT = android.os.Build.VERSION.SDK_INT;
-        if (SDK_INT > 8) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                    .permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-
-        }
-
-
-        //DefaultHttpClient httpClient = new DefaultHttpClient();
-        ResponseHandler<String> responseHandler = new BasicResponseHandler();
-        HttpGet request = new HttpGet("http://mainproject.manuknarayanan.in/api/v1/ticket");
-        request.addHeader("Authorization", "Basic " + Base64.encodeToString(userid.getBytes(), Base64.NO_WRAP));
-        HttpClient httpclient = new DefaultHttpClient();
-        try {
-            HttpResponse response = httpclient.execute(request);
-            org.json.JSONObject sa = new org.json.JSONObject(org.apache.http.util.EntityUtils.toString(response.getEntity()));
-            Log.d("tickets:", sa.getString("error"));
-            if (sa.getString("error").equals("false")) {
-                String sa5 = sa.getString("tickets");
-                JSONArray ticketarray = new JSONArray(sa5);
-                int a = ticketarray.length();
-                tickets = new String[ticketarray.length()];
-                id=new String[ticketarray.length()];
-                sta=new String[ticketarray.length()];
-                n=ticketarray.length();
-                for(int i=0;i<ticketarray.length();i++) {
-                    org.json.JSONObject sa3 = ticketarray.getJSONObject(i);
-                    Log.d("id", sa3.getString("id"));
-
-                    tickets[j] = sa3.getString("id");
-                    id[j]=sa3.getString("id");
-                    Log.d("Subject", tickets[j]);
-                    Log.d("Description", sa3.getString("Description"));
-                    Log.d("Status", sa3.getString("Status"));
-                    sta[j]=sa3.getString("Status");
-                    j++;
-
-
-                }
-
-
-               int number=j+1;
-                t3.setText(Integer.toString(number));
-
-            }
-            else{
-                Log.d("test print from server:", sa.getString("message"));
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public void onClick1(View v) {
