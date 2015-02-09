@@ -113,47 +113,45 @@
         android:layout_marginRight="25dp"
         android:background="@drawable/button"
         android:id="@+id/button3"
-        android:onClick=""
+        android:onClick="sendStatus"
         android:layout_alignTop="@+id/textView35"
         android:layout_alignEnd="@+id/imageView7" />
-<RadioGroup
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignTop="@+id/textView31"
-    android:layout_alignStart="@+id/textView33"
-    android:id="@+id/radioGroup2">
-    <RadioButton android:id="@+id/status_pending"
+
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pending"
-        android:onClick="onRadioButtonClicked"
-        android:textColor="#737e7c"
-        android:textSize="15sp"
-
         android:layout_alignTop="@+id/textView31"
-        android:layout_alignStart="@+id/textView33" />
+        android:layout_alignStart="@+id/textView33"
+        android:id="@+id/radioGroup2">
+        <RadioButton android:id="@+id/status_pending"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pending"
+            android:textColor="#737e7c"
+            android:textSize="15sp"
 
-    <RadioButton android:id="@+id/status_onhold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="On hold"
-        android:textColor="#737e7c"
-        android:textSize="15sp"
+            android:layout_alignTop="@+id/textView31"
+            android:layout_alignStart="@+id/textView33" />
 
-        android:onClick="onRadioButtonClicked"
-        android:layout_below="@+id/status_pending"
-        android:layout_alignStart="@+id/status_pending" />
+        <RadioButton android:id="@+id/status_onhold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On hold"
+            android:textColor="#737e7c"
+            android:textSize="15sp"
 
-    <RadioButton android:id="@+id/status_completed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#737e7c"
-        android:textSize="15sp"
+            android:layout_below="@+id/status_pending"
+            android:layout_alignStart="@+id/status_pending" />
 
-        android:text="Completed"
-        android:onClick="onRadioButtonClicked"
-        android:layout_below="@+id/status_onhold"
-        android:layout_alignStart="@+id/status_onhold" />
+        <RadioButton android:id="@+id/status_completed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#737e7c"
+            android:textSize="15sp"
+
+            android:text="Completed"
+            android:layout_below="@+id/status_onhold"
+            android:layout_alignStart="@+id/status_onhold" />
     </RadioGroup>
 
     <EditText

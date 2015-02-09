@@ -130,10 +130,12 @@ public class display extends Activity {
                 status= ticketarray.getString("Status");
                 sts.setText(status);
                 update= ticketarray.getString("updated_at");
-                up.setText(update);
+               up.setText(update);
+//                location=ticketarray.getString("GeoLocation");
+//                lo.setText(location);
                 lon=ticketarray.getString("Longitude");
                 lat=ticketarray.getString("Latitude");
-                Log.d("value of lon",lon);
+//                Log.d("value of lon",lon);
                 double MyLat = Double.parseDouble(lat);
                 double MyLong = Double.parseDouble(lon);
 
@@ -157,7 +159,7 @@ public class display extends Activity {
                 Log.d("Description", ticketarray.getString("Status"));
                 Log.d("Description", ticketarray.getString("updated_at"));
                 // Log.d("Description", ticketarray.getString("Location"));
-                //e1.setText(ticketarray.getString("Status"));
+             // g2   e1.setText(ticketarray.getString("Status"));
                 JSONObject userstaff=new JSONObject(ticketarray.getString("userstaff"));
                 Log.d("Description", userstaff.getString("fname"));
                 staff=userstaff.getString("fname");

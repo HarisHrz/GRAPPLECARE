@@ -9,11 +9,12 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.Toast;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -29,6 +30,7 @@ import java.util.Locale;
 public class staffdisplay extends Activity {
 
 
+    Double latitude, longitude;
     public static int j=0;
     String name = MainActivity.Name;
     String email = MainActivity.Email;
@@ -74,27 +76,43 @@ public class staffdisplay extends Activity {
         else {
             setContentView(R.layout.statusupdate);
 
+            GPSTracker gpsTracker = new GPSTracker(this);
+
+            if (gpsTracker.canGetLocation())
+            {
+                latitude = gpsTracker.latitude;
+                Log.d("Latitude", latitude+"");
+
+                longitude = gpsTracker.longitude;
+                Log.d("Longitude", longitude+"");
+            }
+            else
+            {
+                // can't get location
+                // GPS or Network is not enabled
+                // Ask user to enable GPS/network in settings
+                gpsTracker.showSettingsAlert();
+            }
+
             tick=(TextView) findViewById(R.id.textView35);
             sb=(TextView) findViewById(R.id.textView33);
             RadioGroup rg=(RadioGroup) findViewById(R.id.radioGroup2);
             rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    RadioButton rb1=(RadioButton) findViewById(R.id.status_pending);
-                    RadioButton rb2=(RadioButton) findViewById(R.id.status_onhold);
-                    RadioButton rb3=(RadioButton) findViewById(R.id.status_completed);
-                    if(rb1.isChecked()) { radio_status="Pending";
+                    if (checkedId == R.id.status_pending) {
+                        radio_status = "Pending";
                     }
-                    else if(rb2.isChecked()){
-                        radio_status="OnHold";
+                    else if (checkedId == R.id.status_onhold) {
+                        radio_status = "On Hold";
                     }
-                    else if(rb3.isChecked())
-                    {
-                        radio_status="Completed";
+                    else {
+                        if (checkedId == R.id.status_completed) {
+                            radio_status = "Completed";
+                        }
                     }
 
-
-
+                    Log.d("Radio", radio_status);
                 }
             });
 
@@ -187,17 +205,13 @@ public class staffdisplay extends Activity {
 
 
     }
-    public void onClick4(View view) {
+    public void sendStatus(View view) {
 
 
         String remark = ((EditText) findViewById(R.id.editText3)).getText().toString();
-
-
-
-
-
+        Log.d("status", radio_status);
         Log.d("remark",remark);
-
+        Log.d("ticket", getIntent().getStringExtra("ticket"));
 
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
         if (SDK_INT > 8) {
@@ -207,36 +221,39 @@ public class staffdisplay extends Activity {
 
         }
 
-
-        //DefaultHttpClient httpClient = new DefaultHttpClient();
-        HttpGet request1 = new HttpGet("http://mainproject.manuknarayanan.in/api/v1/ticket/changestatus/" + getIntent().getStringExtra("ticket") + "?status=" +radio_status );
-        request1.addHeader("Authorization", "Basic " + Base64.encodeToString(userid.getBytes(), Base64.NO_WRAP));
-        HttpClient httpclient1 = new DefaultHttpClient();
+        HttpGet req = new HttpGet("http://mainproject.manuknarayanan.in/api/v1/ticket/changestatus/" + getIntent().getStringExtra("ticket") + "?status=" +radio_status );
+        req.addHeader("Authorization", "Basic " + Base64.encodeToString(userid.getBytes(), Base64.NO_WRAP));
+        HttpClient httpc = new DefaultHttpClient();
         try {
-            HttpResponse response = httpclient1.execute(request1);
+            HttpResponse response = httpc.execute(req);
             org.json.JSONObject sa = new org.json.JSONObject(org.apache.http.util.EntityUtils.toString(response.getEntity()));
             Log.d("message", sa.getString("message"));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        ResponseHandler<String> responseHandler = new BasicResponseHandler();
-        HttpGet request = new HttpGet("http://mainproject.manuknarayanan.in/api/v1/ticket/remark/" + getIntent().getStringExtra("ticket") + "?remark=" + remark);
-        request.addHeader("Authorization", "Basic " + Base64.encodeToString(userid.getBytes(), Base64.NO_WRAP));
-        HttpClient httpclient = new DefaultHttpClient();
+        HttpGet req1 = new HttpGet("http://mainproject.manuknarayanan.in/api/v1/ticket/remark/" + getIntent().getStringExtra("ticket") + "?remark=" + remark);
+        req1.addHeader("Authorization", "Basic " + Base64.encodeToString(userid.getBytes(), Base64.NO_WRAP));
+        HttpClient httpc1 = new DefaultHttpClient();
         try {
-            HttpResponse response = httpclient.execute(request);
+            HttpResponse response = httpc1.execute(req1);
             org.json.JSONObject sa = new org.json.JSONObject(org.apache.http.util.EntityUtils.toString(response.getEntity()));
             Log.d("message", sa.getString("message"));
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        HttpGet req2 = new HttpGet("http://mainproject.manuknarayanan.in/api/v1/ticket/location/"+getIntent().getStringExtra("ticket")+"?lat="+latitude+"&long="+longitude);
+        req2.addHeader("Authorization", "Basic " + Base64.encodeToString(userid.getBytes(), Base64.NO_WRAP));
+        HttpClient httpc2 = new DefaultHttpClient();
+        try {
+            HttpResponse response = httpc2.execute(req2);
+            org.json.JSONObject sa = new org.json.JSONObject(org.apache.http.util.EntityUtils.toString(response.getEntity()));
+            Log.d("message", sa.getString("message"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Toast.makeText(this, "Successfully Updated", Toast.LENGTH_SHORT).show();
     }
 
 }
-
-
-
-
-
-
