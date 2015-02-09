@@ -221,29 +221,7 @@ public class staffdisplay extends Activity {
 
         }
 
-        HttpGet req = new HttpGet("http://mainproject.manuknarayanan.in/api/v1/ticket/changestatus/" + getIntent().getStringExtra("ticket") + "?status=" +radio_status );
-        req.addHeader("Authorization", "Basic " + Base64.encodeToString(userid.getBytes(), Base64.NO_WRAP));
-        HttpClient httpc = new DefaultHttpClient();
-        try {
-            HttpResponse response = httpc.execute(req);
-            org.json.JSONObject sa = new org.json.JSONObject(org.apache.http.util.EntityUtils.toString(response.getEntity()));
-            Log.d("message", sa.getString("message"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        HttpGet req1 = new HttpGet("http://mainproject.manuknarayanan.in/api/v1/ticket/remark/" + getIntent().getStringExtra("ticket") + "?remark=" + remark);
-        req1.addHeader("Authorization", "Basic " + Base64.encodeToString(userid.getBytes(), Base64.NO_WRAP));
-        HttpClient httpc1 = new DefaultHttpClient();
-        try {
-            HttpResponse response = httpc1.execute(req1);
-            org.json.JSONObject sa = new org.json.JSONObject(org.apache.http.util.EntityUtils.toString(response.getEntity()));
-            Log.d("message", sa.getString("message"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        HttpGet req2 = new HttpGet("http://mainproject.manuknarayanan.in/api/v1/ticket/location/"+getIntent().getStringExtra("ticket")+"?lat="+latitude+"&long="+longitude);
+        HttpGet req2 = new HttpGet("http://mainproject.manuknarayanan.in/api/v1/ticket/location/"+getIntent().getStringExtra("ticket")+"?lat="+latitude+"&long="+longitude+"&remark="+remark+"&status="+radio_status);
         req2.addHeader("Authorization", "Basic " + Base64.encodeToString(userid.getBytes(), Base64.NO_WRAP));
         HttpClient httpc2 = new DefaultHttpClient();
         try {

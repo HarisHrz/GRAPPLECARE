@@ -4,95 +4,58 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/fg"
+    android:background="@drawable/mg"
 
 
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+  >
     <EditText
         android:id="@+id/editText1"
-        android:layout_width="match_parent"
+        android:layout_width="270dp"
         android:layout_height="50dp"
+        android:layout_marginStart="35dp"
 
-        android:layout_marginBottom="152dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="@string/Username"
 
         android:textColorHint="#ffffff"
         android:textColor="#e5e4e2"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false" />
+        android:layout_above="@+id/editText2" />
 
 
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="match_parent"
+        android:layout_width="270dp"
         android:layout_height="50dp"
-
-        android:layout_alignTop="@+id/editText1"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="35dp"
         android:ems="10"
         android:inputType="textPassword"
         android:hint="@string/Password"
         android:textColorHint="#ffffff"
         android:textColor="#e5e4e2"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="73dp" />
 
     <Button
+
         android:id="@+id/button1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    android:layout_width="120dp"
+    android:layout_height="40dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="40dp"
+    android:text="@string/Login"
+    android:clickable="true"
+    android:textColor="#e5e4e2"
+    android:layout_marginLeft="-40dp"
 
-        android:text="@string/Login"
-        android:clickable="true"
-        android:textColor="#e5e4e2"
-        android:layout_below="@+id/editText2"
+        android:onClick="onClickl"
+    android:background="#348781"
 
-        android:layout_alignParentStart="true"
-        android:onClick="onClick"
-        android:background="#348781"
-
-        />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/caa"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#e5e4e2"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true" />
 
-        android:focusableInTouchMode="false" />
-
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Grapple_Care"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#e5e4e2"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:layout_above="@+id/editText1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="135dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_alignStart="@+id/textView2"
-        android:src="@drawable/icon"
-
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_alignEnd="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="-35dp"/>
 
 
 </RelativeLayout>

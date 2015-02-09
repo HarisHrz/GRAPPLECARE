@@ -41,22 +41,6 @@
         android:layout_alignParentBottom="true"
         />
 
-    <Button
-        android:layout_marginEnd="10dp"
-
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="+"
-        android:textSize="35sp"
-        android:textColor="#ffffff"
-        android:fontFamily="sans-serf-thin"
-        android:textStyle="bold"
-        android:id="@+id/insert"
-        android:background="@drawable/button"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="onClick1"/>
-
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -115,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="2"
+        android:text="1"
         android:layout_marginLeft="-4dp"
         android:layout_marginTop="36dp"
         android:textSize="22sp"
@@ -472,16 +456,16 @@
 
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="V"
-        android:textSize="35sp"
+        android:text="View"
+        android:textSize="15sp"
         android:textColor="#ffffff"
         android:fontFamily="sans-serf-thin"
         android:textStyle="bold"
         android:id="@+id/view"
         android:background="@drawable/button2"
         android:onClick="onClick2"
-        android:layout_alignTop="@+id/textView"
-        android:layout_alignStart="@+id/insert" />
+        android:layout_alignBottom="@+id/textView"
+        android:layout_toEndOf="@+id/textView4" />
 
     <TextView
         android:layout_width="wrap_content"

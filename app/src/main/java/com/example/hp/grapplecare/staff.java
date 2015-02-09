@@ -4,10 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.v7.app.ActionBarActivity;
+
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -25,8 +26,11 @@ public class staff extends Activity {
     String tickets[];
     String sta[];
     String id[];
+    String name = MainActivity.Name;
+    String email = MainActivity.Email;
     String feed[];
     String rating[];
+    TextView t1,t2;
     //github testing
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,11 @@ public class staff extends Activity {
 
         setContentView(R.layout.staff);
     String tickets[];
+        t1 = (TextView) findViewById(R.id.nm);
+        t2 = (TextView) findViewById(R.id.em);
 
+        t1.setText(name);
+        t2.setText(email);
 
 
 

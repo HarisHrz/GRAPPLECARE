@@ -472,8 +472,8 @@
 
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="V"
-        android:textSize="35sp"
+        android:text="View"
+        android:textSize="15sp"
         android:textColor="#ffffff"
         android:fontFamily="sans-serf-thin"
         android:textStyle="bold"

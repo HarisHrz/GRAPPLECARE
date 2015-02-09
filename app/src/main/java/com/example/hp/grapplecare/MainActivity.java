@@ -77,7 +77,7 @@ public class MainActivity extends Activity {
 
 
 
-    public void onClick(View v) {
+    public void onClickl(View v) {
         // TODO Auto-generated method stub
           final ProgressDialog dialog = ProgressDialog.show(this,"Connecting.","Please wait ..",true);
 
